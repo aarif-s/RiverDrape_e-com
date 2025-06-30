@@ -1,10 +1,15 @@
- 
+import React from 'react';
+import Navbar from './components/Navbar'; 
+import Sidebar from './components/Sidebar';
+import './App.css'; // Assuming you have a CSS file for global styles
 
-const   App = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <h1 className="text-red-500 font-bold text-3xl">Welcome Aabid</h1>
-      <p>This is a simple React application.</p>
+      <Navbar />
+      <div>
+        <Sidebar/>
+      </div>
     </div>
   );
 };
