@@ -46,15 +46,7 @@ const styles = {
     alignItems: 'center',
   },
   logo: {
-<<<<<<< Updated upstream
     height: '60px',
-=======
-    height: '60px', // logo size retained
-  },
-  right: {
-    display: 'flex',
-    alignItems: 'center',
->>>>>>> Stashed changes
   },
   profileBtn: {
     backgroundColor: '#ffffff',
