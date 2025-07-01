@@ -14,30 +14,35 @@ const links = [
   { name: 'List', path: '/list', icon: <FiBox /> },
   { name: 'Analytics', path: '/analytics', icon: <FiBarChart2 /> },
   { name: 'Settings', path: '/settings', icon: <FiSettings /> },
+  { name: 'Home', path: '/home', icon: <FiSettings /> },
 ];
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <aside className="h-screen w-64 bg-white shadow-lg px-6 pt-[100px] border-r">
+    <aside className="h-screen w-64 bg-gradient-to-b from-white to-gray-100 shadow-md px-6 pt-[100px] border-r border-gray-200">
       <nav className="flex-1">
-        <ul className="space-y-2 mt-4 list-none">
-          {links.map((link) => (
-            <li key={link.name}>
-              <Link
-                to={link.path}
-                className={`flex items-center gap-4 px-4 py-3 rounded-lg text-[17px] transition-all duration-200 no-underline ${
-                  location.pathname === link.path
-                    ? 'bg-gray-200 text-black font-semibold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-black'
-                }`}
-              >
-                <span className="text-[20px]">{link.icon}</span>
-                <span>{link.name}</span>
-              </Link>
-            </li>
-          ))}
+        <ul className="space-y-1 mt-4 list-none">
+          {links.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <li key={link.name}>
+                <Link
+                  to={link.path}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 no-underline 
+                    ${
+                      isActive
+                        ? 'bg-white-100 text-black-700 shadow-inner font-semibold'
+                        : 'text-black-700 hover:bg-gray-100 hover:text-black-700'
+                    }`}
+                >
+                  <span className="text-xl">{link.icon}</span>
+                  <span>{link.name}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </aside>
