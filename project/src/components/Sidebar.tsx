@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navbar from './navbar'; // ✅ correct
+import Sidebar from "./Sidebar";
 
-const Sidebar = () => {
-    return (
-        <div className="sidebar bg-gray-800 text-white w-64 h-full p-4">
-            <h2 className="text-xl font-bold mb-4">Sidebar</h2>
-            <ul className="space-y-2">
-                <li><a href="#" className="hover:text-blue-400">Home</a></li>
-                <li><a href="#" className="hover:text-blue-400">About</a></li>
-                <li><a href="#" className="hover:text-blue-400">Services</a></li>
-                <li><a href="#" className="hover:text-blue-400">Contact</a></li>
-            </ul>
-        </div>
-    );
+
+import { FiMenu } from 'react-icons/fi';
+
+const App: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  return (
+    <div className="App relative">
+      <Navbar />
+
+      {/* ✅ Toggle button placed below the navbar, above other content */}
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className="absolute top-[90px] left-4 z-50 bg-white border border-gray-300 shadow-md rounded-md p-2 hover:bg-gray-100"
+      >
+        <FiMenu size={20} />
+      </button>
+
+      {/* ✅ Layout with Sidebar and Main Content */}
+      <div className="flex" style={{ paddingTop: '180px' }}>
+        <Sidebar isOpen={isSidebarOpen} />
+
+        <main
+          className="flex-1 p-6 transition-all duration-300"
+          style={{ marginLeft: isSidebarOpen ? '256px' : '0' }}
+        >
+          <h1 className="text-2xl font-bold">Main Content</h1>
+        </main>
+      </div>
+    </div>
+  );
 };
 
-export default Sidebar;
+export default App;
