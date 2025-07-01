@@ -1,24 +1,54 @@
+<<<<<<< Updated upstream
+ // src/App.tsx
+=======
+// src/App.tsx
+>>>>>>> Stashed changes
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+ 
 import Navbar from './components/navbar';
 import Sidebar from './components/Sidebar';
+import AdminLogin from './pages/AdminLogin';
+<<<<<<< Updated upstream
+//import AdminSignup from './pages/AdminSignup';
+import AdminDashboard from './pages/AdminDashboard';
+//import Add from './pages/Add';
+//import List from './pages/List';
+//import Orders from './pages/Orders';
+=======
+// import AdminSignup from './pages/AdminSignup';
+// import AdminDashboard from './pages/AdminDashboard';
+// import Add from './pages/Add';
+// import List from './pages/List';
+// import Orders from './pages/Orders';
+>>>>>>> Stashed changes
+import PrivateRoute from './routes/PrivateRoute';
 
-const App: React.FC = () => {
+const App = () => {
   return (
-    <div className="min-h-screen">
-      {/* Fixed Navbar */}
+    <AuthProvider>
       <Navbar />
-
-      {/* Main Layout */}
-      <div className="flex">
-        {/* Sidebar - fixed width on the left */}
-        <div className="flex-1 p-6 bg-gray-50" style={{ marginTop: '90px' }}></div>
-        <div className="w-64 h-screen bg-white border-r shadow-sm">
-          <Sidebar />
-        </div>
-        
-      
+      <div style={{ paddingTop: '100px' }}>
+        <Sidebar />
+<<<<<<< Updated upstream
+        {/* Main content area */}
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
+          
+=======
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          {/* <Route path="/admin/signup" element={<AdminSignup />} /> */}
+          {/* <Route path="/admin/dashboard" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} /> */}
+          {/* <Route path="/add" element={<PrivateRoute><Add /></PrivateRoute>} />
+          <Route path="/list" element={<PrivateRoute><List /></PrivateRoute>} />
+          <Route path="/orders" element={<PrivateRoute><Orders /></PrivateRoute>} /> */}
+>>>>>>> Stashed changes
+          <Route path="*" element={<AdminLogin />} />
+        </Routes>
       </div>
-    </div>
+    </AuthProvider>
   );
 };
 
