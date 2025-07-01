@@ -1,19 +1,16 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AdminLogin from "./pages/AdminLogin";
-import AdminSignup from "./pages/AdminSignup";
-import AdminDashboard from "./pages/AdminDashboard";
-import Navbar from "./components/Navbar";
+import React from 'react';
+import Navbar from './components/navbar'; 
+import Sidebar from './components/Sidebar';
+import './App.css'; // Assuming you have a CSS file for global styles
 
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/signup" element={<AdminSignup />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-      </Routes>
-    </BrowserRouter>
+      <div>
+        <Sidebar/>
+      </div>
+    </div>
   );
 }
 
