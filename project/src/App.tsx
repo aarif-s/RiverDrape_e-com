@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './components/navbar';
 import Sidebar from './components/Sidebar';
-import { FiMenu } from 'react-icons/fi';
 
 const App: React.FC = () => {
-
   return (
-    <div className="App">
+    <div className="min-h-screen">
+      {/* Fixed Navbar */}
       <Navbar />
 
-
-      {/* Layout with sidebar and content */}
-      <div className="flex" style={{ paddingTop: '080px' }}>
-      <Sidebar />
-
+      {/* Main Layout */}
+      <div className="flex">
+        {/* Sidebar - fixed width on the left */}
+        <div className="flex-1 p-6 bg-gray-50" style={{ marginTop: '90px' }}></div>
+        <div className="w-64 h-screen bg-white border-r shadow-sm">
+          <Sidebar />
+        </div>
         
+      
       </div>
     </div>
   );

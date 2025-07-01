@@ -46,7 +46,7 @@ const styles = {
     alignItems: 'center',
   },
   logo: {
-    height: '180px', // logo size retained
+    height: '60px', // logo size retained
   },
   right: {
     display: 'flex',
