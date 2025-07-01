@@ -1,32 +1,28 @@
 // src/App.tsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/navbar';
 import Sidebar from './components/Sidebar';
-import AdminLogin from './pages/AdminLogin';
-// import AdminSignup from './pages/AdminSignup';
-// import AdminDashboard from './pages/AdminDashboard';
-//import Add from './pages/Add';
-//import List from './pages/List';
-//import Orders from './pages/Orders';
-import PrivateRoute from './routes/PrivateRoute';
+import AddTshirt from './pages/add';
+import List from './pages/list';
 
 const App = () => {
   return (
-    <AuthProvider>
+    <>
       <Navbar />
-      <div style={{ paddingTop: '100px' }}>
+      <div className="flex pt-[80px]">
         <Sidebar />
-        {/* Main content area */}
-        <Routes>
-          <Route path="/admin/login" element={<AdminLogin />} />
- 
-          <Route path="*" element={<AdminLogin />} />
-        </Routes>
+
+        {/* Page content: add margin-left to prevent overlap with fixed sidebar */}
+        <div className="flex-1 ml-64 p-6"> {/* 👈 ml-64 = match sidebar width */}
+          <Routes>
+            <Route path="/add" element={<AddTshirt url="http://localhost:3000" />} />
+            <Route path="/list" element={<List url="http://localhost:3000" />} />
+            {/* Add more routes here */}
+          </Routes>
+        </div>
       </div>
-    </AuthProvider>
+    </>
   );
 };
 
