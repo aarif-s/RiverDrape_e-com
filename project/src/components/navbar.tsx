@@ -67,15 +67,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     margin: '0 auto',
   },
   logo: {
-<<<<<<< HEAD
     height: '60px',
-=======
-    height: '60px', // logo size retained
-  },
-  right: {
-    display: 'flex',
-    alignItems: 'center',
->>>>>>> 3d7d716a65749b6dbb583c80bf8f8dbce0ace365
   },
   profileBtn: {
     border: '1px solid #000',
