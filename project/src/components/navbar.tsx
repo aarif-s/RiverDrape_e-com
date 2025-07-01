@@ -1,100 +1,70 @@
-// src/components/Navbar.tsx
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+ import React from 'react';
+import assets from '../assets/assets';
 
 const Navbar = () => {
-  const { isLoggedIn, logout } = useAuth();
-  const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/admin/login');
-  };
-
   return (
     <nav style={styles.navbar}>
       <div style={styles.container}>
-        <div>
-          <img src="/logo.png" alt="Logo" style={styles.logo} />
+        {/* Left: Logo */}
+        <div style={styles.left}>
+          <img src={assets.logo} alt="Logo" style={styles.logo} />
         </div>
 
-        <div style={{ position: 'relative' }}>
-          <button onClick={() => setOpen(!open)} style={styles.profileBtn}>
-            Admin
-          </button>
-
-          {open && (
-            <div style={styles.dropdown}>
-              {!isLoggedIn ? (
-                <>
-                  <Link to="/admin/login" style={styles.link}>Login</Link>
-                  <Link to="/admin/signup" style={styles.link}>Sign Up</Link>
-                </>
-              ) : (
-                <>
-                  <p style={styles.link}>Logged in as Admin</p>
-                  <button onClick={handleLogout} style={styles.link}>Logout</button>
-                </>
-              )}
-            </div>
-          )}
+        {/* Right: Profile Button */}
+        <div style={styles.right}>
+          <button style={styles.profileBtn}>Profile</button>
         </div>
       </div>
     </nav>
   );
 };
 
-const styles: { [key: string]: React.CSSProperties } = {
+const styles = {
   navbar: {
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     height: '80px',
     display: 'flex',
     alignItems: 'center',
-    padding: '0 20px',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+    padding: '0 8px', // less padding on left and right
+    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
     position: 'fixed',
     top: 0,
-    width: '100%',
-    zIndex: 999,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
   },
   container: {
+    width: '100%',
+    maxWidth: '1000px', // narrower container
+    margin: '0 auto',
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100%',
-    maxWidth: '1200px',
-    margin: '0 auto',
+    alignItems: 'center',
+  },
+  left: {
+    display: 'flex',
+    alignItems: 'center',
   },
   logo: {
+<<<<<<< Updated upstream
     height: '60px',
+=======
+    height: '60px', // logo size retained
+  },
+  right: {
+    display: 'flex',
+    alignItems: 'center',
+>>>>>>> Stashed changes
   },
   profileBtn: {
-    border: '1px solid #000',
+    backgroundColor: '#ffffff',
+    border: '1px solid #000000',
+    color: '#000000',
+    padding: '6px 12px',
     borderRadius: '6px',
-    padding: '8px 12px',
-    backgroundColor: '#fff',
     cursor: 'pointer',
-    fontWeight: 500,
-  },
-  dropdown: {
-    position: 'absolute',
-    top: '45px',
-    right: 0,
-    backgroundColor: '#fff',
-    border: '1px solid #ddd',
-    borderRadius: '6px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    zIndex: 999,
-  },
-  link: {
-    display: 'block',
-    padding: '10px 14px',
-    textDecoration: 'none',
-    color: '#333',
-    backgroundColor: '#fff',
-    borderBottom: '1px solid #eee',
-    cursor: 'pointer',
+    fontWeight: '500',
+    fontSize: '14px',
   },
 };
 

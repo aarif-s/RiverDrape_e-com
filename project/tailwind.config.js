@@ -1,6 +1,5 @@
-import { type Config } from 'tailwindcss'
-
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -30,7 +29,6 @@ export default {
           dark: '#BDC3C7',
           lighter: '#F5F7F8'
         },
-        // Additional UI colors
         success: '#2ECC71',
         error: '#E74C3C',
         warning: '#F1C40F',
@@ -53,4 +51,4 @@ export default {
     }
   },
   plugins: []
-} satisfies Config
+};
