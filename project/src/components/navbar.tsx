@@ -1,66 +1,100 @@
-import React from 'react';
-import assets from '../assets/assets';
+// src/components/Navbar.tsx
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/admin/login');
+  };
+
   return (
     <nav style={styles.navbar}>
       <div style={styles.container}>
-        {/* Left: Logo */}
-        <div style={styles.left}>
-          <img src={assets.logo} alt="Logo" style={styles.logo} />
+        <div>
+          <img src="/logo.png" alt="Logo" style={styles.logo} />
         </div>
 
-        {/* Right: Profile Button */}
-        <div style={styles.right}>
-          <button style={styles.profileBtn}>Profile</button>
+        <div style={{ position: 'relative' }}>
+          <button onClick={() => setOpen(!open)} style={styles.profileBtn}>
+            Admin
+          </button>
+
+          {open && (
+            <div style={styles.dropdown}>
+              {!isLoggedIn ? (
+                <>
+                  <Link to="/admin/login" style={styles.link}>Login</Link>
+                  <Link to="/admin/signup" style={styles.link}>Sign Up</Link>
+                </>
+              ) : (
+                <>
+                  <p style={styles.link}>Logged in as Admin</p>
+                  <button onClick={handleLogout} style={styles.link}>Logout</button>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </nav>
   );
 };
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   navbar: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fff',
     height: '80px',
     display: 'flex',
     alignItems: 'center',
-    padding: '0 8px', // less padding on left and right
-    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+    padding: '0 20px',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
     position: 'fixed',
     top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1000,
+    width: '100%',
+    zIndex: 999,
   },
   container: {
-    width: '100%',
-    maxWidth: '1000px', // narrower container
-    margin: '0 auto',
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  left: {
-    display: 'flex',
-    alignItems: 'center',
+    width: '100%',
+    maxWidth: '1200px',
+    margin: '0 auto',
   },
   logo: {
-    height: '180px', // logo size retained
-  },
-  right: {
-    display: 'flex',
-    alignItems: 'center',
+    height: '60px',
   },
   profileBtn: {
-    backgroundColor: '#ffffff',
-    border: '1px solid #000000',
-    color: '#000000',
-    padding: '6px 12px',
+    border: '1px solid #000',
     borderRadius: '6px',
+    padding: '8px 12px',
+    backgroundColor: '#fff',
     cursor: 'pointer',
-    fontWeight: '500',
-    fontSize: '14px',
+    fontWeight: 500,
+  },
+  dropdown: {
+    position: 'absolute',
+    top: '45px',
+    right: 0,
+    backgroundColor: '#fff',
+    border: '1px solid #ddd',
+    borderRadius: '6px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    zIndex: 999,
+  },
+  link: {
+    display: 'block',
+    padding: '10px 14px',
+    textDecoration: 'none',
+    color: '#333',
+    backgroundColor: '#fff',
+    borderBottom: '1px solid #eee',
+    cursor: 'pointer',
   },
 };
 
