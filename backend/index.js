@@ -10,6 +10,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors()); // Allow cross-origin requests
 app.use(express.json()); // Parse JSON bodies
 
+const connectDB = require('./config/db.js');
+connectDB(); // ← this is required
+
+
 // Route for admin login
 app.use('/admin', adminRoutes);
 
