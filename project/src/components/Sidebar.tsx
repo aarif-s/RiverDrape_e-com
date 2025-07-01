@@ -11,7 +11,7 @@ import {
 
 const links = [
   { name: 'Home', path: '/home', icon: <FiHome /> },
-  { name: 'Orders', path: '/orders', icon: <FiShoppingBag /> },
+  { name: 'Orders', path: '/order', icon: <FiShoppingBag /> },
   { name: 'Add Product', path: '/add', icon: <FaTshirt /> },
   { name: 'List', path: '/list', icon: <FiBox /> },
   { name: 'Analytics', path: '/analytics', icon: <FiBarChart2 /> },

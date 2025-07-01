@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import assets from '../assets/assets';  
 
 interface Product {
   _id: string;
@@ -22,7 +23,7 @@ const List: React.FC = () => {
         description: 'Premium cotton t-shirt with relaxed fit for streetwear vibes.',
         category: 'T-Shirt',
         price: 599,
-        images: ['https://source.unsplash.com/featured/?tshirt,black'],
+        images: [assets.tshirt1],
       },
       {
         _id: '2',
@@ -30,7 +31,7 @@ const List: React.FC = () => {
         description: 'Essential white t-shirt with breathable fabric.',
         category: 'T-Shirt',
         price: 399,
-        images: ['https://source.unsplash.com/featured/?tshirt,white'],
+        images: [assets.tshirt2],
       },
       {
         _id: '3',
@@ -38,7 +39,7 @@ const List: React.FC = () => {
         description: 'Trendy print design on a comfortable tee.',
         category: 'T-Shirt',
         price: 699,
-        images: ['https://source.unsplash.com/featured/?tshirt,design'],
+        images: [assets.tshirt3],
       },
     ];
 
