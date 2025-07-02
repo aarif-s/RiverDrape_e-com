@@ -1,0 +1,30 @@
+/* App.css - Clean base for admin layout */
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo {
+  height: 40px;
+}
+
+/* Optional layout helpers */
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
