@@ -25,7 +25,11 @@
     "react-slick": "^0.30.2",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "recharts": "^3.0.2",
+=======
+    "react-toastify": "^11.0.5",
+>>>>>>> Stashed changes
 =======
     "react-toastify": "^11.0.5",
 >>>>>>> Stashed changes
