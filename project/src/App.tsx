@@ -6,6 +6,8 @@ import Sidebar from './components/Sidebar';
 import AddTshirt from './pages/add';
 import List from './pages/list';
 import Orders from './pages/order';
+import Home from './pages/home';
+import Analytics from './pages/analytics';
 const App = () => {
   return (
     <>
@@ -19,6 +21,8 @@ const App = () => {
             <Route path="/add" element={<AddTshirt url="http://localhost:3000" />} />
             <Route path="/list" element={<List url="http://localhost:3000" />} />
             <Route path="/order" element={<Orders url="http://localhost:3000" />} />
+            <Route path="/home" element={<Home url="http://localhost:3000" />} />
+            <Route path="/analytics" element={<Analytics url="http://localhost:3000" />} />
             {/* Add more routes here */}
           </Routes>
         </div>
