@@ -1,28 +1,42 @@
 // src/context/AuthContext.tsx
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 interface AuthContextType {
-  isLoggedIn: boolean;
+  isAuthenticated: boolean;
+  login: (token: string) => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
-    setIsLoggedIn(!!token);
+    setIsAuthenticated(!!token);
   }, []);
+
+  const login = (token: string) => {
+    localStorage.setItem('adminToken', token);
+    setIsAuthenticated(true);
+    const redirectPath = location.state?.from || '/';
+    navigate(redirectPath, { replace: true });
+  };
 
   const logout = () => {
     localStorage.removeItem('adminToken');
-    setIsLoggedIn(false);
+    setIsAuthenticated(false);
+    navigate('/admin/login');
+    toast.success('Logged out');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
