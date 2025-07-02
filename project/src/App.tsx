@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/navbar';
 import Sidebar from './components/Sidebar';
 import AdminLogin from './pages/AdminLogin';
+<<<<<<< Updated upstream
 import AdminSignup from './pages/AdminSignup';
 import Home from './pages/Home';
 import AddTshirt from './pages/add';
@@ -14,19 +15,36 @@ import Analytics from './pages/analytics';
 import PrivateRoute from './routes/PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+=======
+import Home from './pages/Home';
+import PrivateRoute from './routes/PrivateRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AdminSignup from './pages/AdminSignup';
+>>>>>>> Stashed changes
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const hideLayout = location.pathname === '/admin/login' || location.pathname === '/admin/signup';
+<<<<<<< Updated upstream
+=======
+  
+>>>>>>> Stashed changes
 
   return (
     <>
       {!hideLayout && <Navbar />}
+<<<<<<< Updated upstream
       <div className={`flex ${!hideLayout ? 'pt-[80px]' : ''}`}>
         {!hideLayout && <Sidebar />}
         <div className={`${!hideLayout ? 'ml-64 p-6 flex-1' : 'w-full'}`}>
           {children}
         </div>
+=======
+      <div style={{ paddingTop: !hideLayout ? '100px' : '0' }}>
+        {!hideLayout && <Sidebar />}
+        {children}
+>>>>>>> Stashed changes
       </div>
     </>
   );
@@ -43,6 +61,7 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/signup" element={<AdminSignup />} />
 
+<<<<<<< Updated upstream
           {/* Protected Routes */}
           <Route path="/" element={
             <PrivateRoute>
@@ -72,17 +91,30 @@ const App = () => {
           <Route path="/analytics" element={
             <PrivateRoute>
               <Analytics url={backendURL} />
+=======
+          <Route path="/" element={
+            <PrivateRoute>
+              <Home />
+>>>>>>> Stashed changes
             </PrivateRoute>
           } />
 
           {/* Optional Catch-All */}
           <Route path="*" element={
             <PrivateRoute>
+<<<<<<< Updated upstream
               <Home url={backendURL} />
             </PrivateRoute>
           } />
         </Routes>
         <ToastContainer position="top-center" autoClose={2000} />
+=======
+              <Home />
+            </PrivateRoute>
+          } />
+        </Routes>
+         <ToastContainer position="top-center" autoClose={2000} />
+>>>>>>> Stashed changes
       </Layout>
     </AuthProvider>
   );
