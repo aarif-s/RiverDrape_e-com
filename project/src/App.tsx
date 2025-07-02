@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 import AdminLogin from './pages/AdminLogin';
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import AdminSignup from './pages/AdminSignup';
 import Home from './pages/Home';
 import AddTshirt from './pages/add';
@@ -30,12 +31,23 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminSignup from './pages/AdminSignup';
 >>>>>>> Stashed changes
+=======
+import Home from './pages/Home';
+import PrivateRoute from './routes/PrivateRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AdminSignup from './pages/AdminSignup';
+>>>>>>> Stashed changes
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const hideLayout = location.pathname === '/admin/login' || location.pathname === '/admin/signup';
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  
+>>>>>>> Stashed changes
 =======
   
 >>>>>>> Stashed changes
@@ -48,11 +60,17 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       {!hideLayout && <Navbar />}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <div className={`flex ${!hideLayout ? 'pt-[80px]' : ''}`}>
         {!hideLayout && <Sidebar />}
         <div className={`${!hideLayout ? 'ml-64 p-6 flex-1' : 'w-full'}`}>
           {children}
         </div>
+=======
+      <div style={{ paddingTop: !hideLayout ? '100px' : '0' }}>
+        {!hideLayout && <Sidebar />}
+        {children}
+>>>>>>> Stashed changes
 =======
       <div style={{ paddingTop: !hideLayout ? '100px' : '0' }}>
         {!hideLayout && <Sidebar />}
@@ -79,6 +97,7 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/signup" element={<AdminSignup />} />
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           {/* Protected Routes */}
@@ -120,12 +139,18 @@ const App = () => {
             <PrivateRoute>
               <Home />
 >>>>>>> Stashed changes
+=======
+          <Route path="/" element={
+            <PrivateRoute>
+              <Home />
+>>>>>>> Stashed changes
             </PrivateRoute>
           } />
 
           {/* Optional Catch-All */}
           <Route path="*" element={
             <PrivateRoute>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
               <Home url={backendURL} />
@@ -136,12 +161,17 @@ const App = () => {
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
               <Home />
             </PrivateRoute>
           } />
         </Routes>
          <ToastContainer position="top-center" autoClose={2000} />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

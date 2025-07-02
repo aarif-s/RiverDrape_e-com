@@ -2,6 +2,7 @@
 import React from 'react';
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import {
   FiShoppingCart,
   FiDollarSign,
@@ -78,6 +79,8 @@ const Home: React.FC = () => {
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
@@ -88,6 +91,9 @@ const Home = () => {
       <h1>Welcome to the Home Page!</h1>
       <button onClick={logout}>Logout</button>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -97,7 +103,11 @@ const Home = () => {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 export default Home;
+=======
+export default Home;
+>>>>>>> Stashed changes
 =======
 export default Home;
 >>>>>>> Stashed changes

@@ -26,7 +26,11 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "recharts": "^3.0.2",
+=======
+    "react-toastify": "^11.0.5",
+>>>>>>> Stashed changes
 =======
     "react-toastify": "^11.0.5",
 >>>>>>> Stashed changes
