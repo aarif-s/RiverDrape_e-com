@@ -1,13 +1,16 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-interface AddTshirtProps {
-  url: string;
-}
+//interface AddTshirtProps {
+  //url: string;
+//}
 
-const AddTshirt: React.FC<AddTshirtProps> = ({ url }) => {
+
+const AddTshirt: React.FC = () => {
+  const url = "http://localhost:4000";
   const [images, setImages] = useState<File[]>([]);
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [data, setData] = useState({
     name: '',
     description: '',
@@ -26,9 +29,21 @@ const AddTshirt: React.FC<AddTshirtProps> = ({ url }) => {
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setImages(Array.from(e.target.files));
+      const filesArray = Array.from(e.target.files);
+      setImages(filesArray);
+
+      // Generate previews
+      const previews = filesArray.map((file) => URL.createObjectURL(file));
+      setPreviewUrls(previews);
     }
   };
+
+  useEffect(() => {
+    // Clean up object URLs to avoid memory leaks
+    return () => {
+      previewUrls.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [previewUrls]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,10 +56,12 @@ const AddTshirt: React.FC<AddTshirtProps> = ({ url }) => {
     const formData = new FormData();
     formData.append('name', data.name);
     formData.append('description', data.description);
-    formData.append('price', data.price);
+    formData.append('price', data.price); // backend will parse it
     formData.append('category', data.category);
     formData.append('sizes', data.sizes);
     formData.append('colors', data.colors);
+
+    // Append all images
     images.forEach((img) => formData.append('images', img));
 
     try {
@@ -60,6 +77,7 @@ const AddTshirt: React.FC<AddTshirtProps> = ({ url }) => {
           colors: '',
         });
         setImages([]);
+        setPreviewUrls([]);
       } else {
         toast.error(res.data.message || 'Failed to add product');
       }
@@ -84,12 +102,12 @@ const AddTshirt: React.FC<AddTshirtProps> = ({ url }) => {
             className="mt-2 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
             required
           />
-          {images.length > 0 && (
+          {previewUrls.length > 0 && (
             <div className="mt-4 flex gap-3 flex-wrap">
-              {images.map((img, idx) => (
+              {previewUrls.map((url, idx) => (
                 <img
                   key={idx}
-                  src={URL.createObjectURL(img)}
+                  src={url}
                   alt="preview"
                   className="w-20 h-20 object-cover rounded border"
                 />
