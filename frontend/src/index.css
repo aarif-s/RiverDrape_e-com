@@ -38,3 +38,11 @@ body {
 .slick-next {
   right: 25px;
 }
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #94a3b8; /* slate-400 */
+}
+.slick-dots li.slick-active button:before {
+  color: #4f46e5; /* indigo-600 */
+}

@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import { loginAdmin, registerAdmin } from '../controllers/adminController.js';
+import { verifyAdminToken } from '../middleware/jwt.js';
+
 const router = express.Router();
-const { loginAdmin, registerAdmin } = require('../controllers/adminController');
-const { verifyAdminToken } = require('../middleware/jwt');
 
 // Public Routes
 router.post('/register', registerAdmin);
@@ -15,8 +16,4 @@ router.get('/dashboard', verifyAdminToken, (req, res) => {
   });
 });
 
-module.exports = router;
-
-
-
-
+export default router;

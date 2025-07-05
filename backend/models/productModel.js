@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
@@ -19,23 +19,24 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['T-Shirt', 'Hoodie', 'Polo', 'Sweatshirt'],
-      default: 'T-Shirt',
+      enum: ["T-Shirt", "Hoodie", "Polo", "Sweatshirt"],
+      default: "T-Shirt",
     },
     sizes: {
-      type: String, // or use [String] if you split by comma on backend
+      type: String,
       required: true,
     },
     colors: {
-      type: String, // or use [String]
+      type: String,
       required: true,
     },
     images: {
-      type: [String], // filenames of uploaded images
+      type: [String],
       required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Product', productSchema);
+const productModel = mongoose.model("Product", productSchema);
+export default productModel; // ✅ Now using default export
