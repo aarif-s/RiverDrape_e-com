@@ -1,11 +1,11 @@
-const Admin = require('../models/Admin.js');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import Admin from '../models/Admin.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const SECRET_KEY = process.env.JWT_SECRET || 'yourSecretKey';
 
 // 🔐 Admin Registration
-exports.registerAdmin = async (req, res) => {
+export const registerAdmin = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email.endsWith('@gmail.com')) {
@@ -28,9 +28,8 @@ exports.registerAdmin = async (req, res) => {
   }
 };
 
-
 // 🔐 Admin Login
-exports.loginAdmin = async (req, res) => {
+export const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email.endsWith('@gmail.com')) {
@@ -44,14 +43,14 @@ exports.loginAdmin = async (req, res) => {
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ id: admin._id, email: admin.email, role: admin.role }, SECRET_KEY, {
-      expiresIn: '1h',
-    });
+    const token = jwt.sign(
+      { id: admin._id, email: admin.email, role: admin.role },
+      SECRET_KEY,
+      { expiresIn: '1h' }
+    );
 
     res.json({ token });
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
-
-
